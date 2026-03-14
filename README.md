@@ -112,6 +112,30 @@ Frontend URL: `http://localhost:5173`
 }
 ```
 
+## End User Screenshots (Module 1)
+
+Screenshots preview in README:
+
+### 1. Dashboard Overview
+
+![Dashboard Overview](frontend/public/screenshots/dashboard-overview.png)
+
+### 2. Inactive Filter With Empty State
+
+![Inactive Filter Empty State](frontend/public/screenshots/filter-inactive-empty.png)
+
+### 3. Create Category Form Filled
+
+![Create Category Form](frontend/public/screenshots/create-category-form-filled.png)
+
+### 4. Category Created Success
+
+![Category Created Success](frontend/public/screenshots/category-created-success.png)
+
+### 5. Category Deactivated And Filtered Inactive
+
+![Category Deactivated Inactive View](frontend/public/screenshots/category-deactivated-inactive-view.png)
+
 ## Next Modules Planned
 
 - Authentication (Admin/User roles)
@@ -119,4 +143,3 @@ Frontend URL: `http://localhost:5173`
 - Cart Management
 - Order + Payment workflow
 - Wishlist and user profile
-
