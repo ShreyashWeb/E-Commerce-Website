@@ -1,0 +1,308 @@
+.page-shell {
+  width: min(1300px, 96vw);
+  margin: 2.5rem auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.5rem;
+  animation: fadeInUp 0.8s ease;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #0d1f2d, #123552);
+  color: #f5f9fc;
+  border-radius: 24px;
+  padding: 1.6rem 1.2rem;
+  box-shadow: 0 18px 32px rgba(8, 22, 35, 0.22);
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.3px;
+}
+
+.brand-subtitle {
+  margin: 0.35rem 0 1.4rem;
+  opacity: 0.78;
+  font-size: 0.9rem;
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.nav-item {
+  color: #e4f0f9;
+  text-decoration: none;
+  border-radius: 14px;
+  padding: 0.7rem 0.9rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.16);
+  transform: translateX(4px);
+}
+
+.main-content {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.header-card {
+  background: linear-gradient(140deg, #fff9ec, #fffef8);
+  border: 1px solid #f2e6cf;
+  border-radius: 24px;
+  padding: 1.3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1.2px;
+  color: #9f760f;
+}
+
+.header-card h2 {
+  margin: 0.25rem 0;
+  font-size: 1.8rem;
+  color: #1f2b36;
+}
+
+.subtitle {
+  margin: 0;
+  color: #596b78;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.stat-card {
+  min-width: 130px;
+  border: 1px solid #f0dcc1;
+  border-radius: 16px;
+  background: #fff;
+  padding: 0.7rem 0.8rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.stat-card span {
+  font-size: 0.76rem;
+  color: #6a7783;
+}
+
+.stat-card strong {
+  font-size: 1.6rem;
+  color: #123552;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1rem;
+}
+
+.card {
+  border-radius: 22px;
+  background: #ffffff;
+  border: 1px solid #d6e5ef;
+  box-shadow: 0 14px 20px rgba(24, 43, 60, 0.06);
+  padding: 1.15rem;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #132838;
+}
+
+form {
+  display: grid;
+  gap: 0.55rem;
+}
+
+label {
+  font-size: 0.9rem;
+  color: #28455f;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid #c2d5e3;
+  border-radius: 12px;
+  padding: 0.7rem;
+  font: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #5ea5d8;
+  border-color: transparent;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 0.62rem 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #156ca3;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #eaf3fa;
+  color: #1a4e71;
+}
+
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e4eef5;
+  text-align: left;
+  padding: 0.65rem 0.45rem;
+  vertical-align: middle;
+}
+
+th {
+  color: #526674;
+  font-weight: 700;
+}
+
+.status-pill {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.status-pill.active {
+  background: #dcf7e7;
+  color: #12633a;
+}
+
+.status-pill.inactive {
+  background: #fbe5e8;
+  color: #9d2436;
+}
+
+.action-cell {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.btn-inline {
+  background: #e8f1f8;
+  color: #1a4e71;
+  padding: 0.35rem 0.55rem;
+}
+
+.btn-inline.danger {
+  background: #ffe8eb;
+  color: #9d2436;
+}
+
+.message {
+  margin: 0.3rem 0 0.75rem;
+  color: #355970;
+}
+
+.message.success {
+  color: #0f6c40;
+}
+
+.message.error {
+  color: #ac2035;
+}
+
+@media (max-width: 1040px) {
+  .page-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    padding: 1.1rem;
+  }
+
+  .content-grid,
+  .header-card {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-cell {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
