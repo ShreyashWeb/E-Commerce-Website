@@ -112,13 +112,6 @@ Frontend URL: `http://localhost:5173`
 }
 ```
 
-## Pending Tasks (Next Submission)
-
-- [ ] Push code to GitHub after each module update
-- [ ] Deploy project on a live server
-- [ ] Keep project URL active for evaluator
-- [ ] Add end-user documentation with screenshots
-
 ## Next Modules Planned
 
 - Authentication (Admin/User roles)
@@ -127,8 +120,3 @@ Frontend URL: `http://localhost:5173`
 - Order + Payment workflow
 - Wishlist and user profile
 
-## Free Deployment Options
-
-- Frontend: Vercel / Netlify
-- Backend: Render / Railway / Fly.io
-- Database for production: PostgreSQL (Neon/Supabase free tier)
