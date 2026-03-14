@@ -112,6 +112,56 @@ Frontend URL: `http://localhost:5173`
 }
 ```
 
+## End User Documentation
+
+This section is for end user flow of Module 1.
+
+### Live Links
+
+- Frontend: https://e-commerce-website-woad-eta.vercel.app
+- Backend Health: https://ecommerce-backend-2s98.onrender.com/api/health
+
+### How to use this module
+
+### 1. Open dashboard
+
+1. Open the frontend link in browser.
+2. Category dashboard page will open.
+3. You can see category list and top stats cards.
+
+### 2. Create new category
+
+1. In left form, enter category name.
+2. Add short description.
+3. Click Create Category button.
+4. Success message will show and category appears in table.
+
+### 3. Update category
+
+1. Click Edit button from any row.
+2. Selected category data will come into form.
+3. Change name or description.
+4. Click Save Changes.
+
+### 4. Deactivate category (soft delete)
+
+1. Click Deactivate button in actions.
+2. If category has products, system asks for replacement category id.
+3. Category status changes to Inactive.
+4. Data is not deleted from database, only status is changed.
+
+### 5. Activate category again
+
+1. Change filter to Inactive.
+2. Click Activate button for that category.
+3. Category will move back to Active list.
+
+### 6. Use filter options
+
+1. Filter dropdown has All, Active, Inactive.
+2. You can check records based on selected status.
+3. Empty table message is shown if no category in that filter.
+
 ## End User Screenshots (Module 1)
 
 Screenshots preview in README:
