@@ -83,3 +83,19 @@ export const reactivateCustomer = async (id) => {
   return response.data;
 };
 
+// Payment APIs
+export const processPayment = async (payload) => {
+  const response = await api.post('/payments', payload);
+  return response.data;
+};
+
+export const getPayments = async (filters = {}) => {
+  const response = await api.get('/payments', { params: filters });
+  return response.data;
+};
+
+export const refundPayment = async (id) => {
+  const response = await api.patch(`/payments/${id}/refund`);
+  return response.data;
+};
+

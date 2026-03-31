@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS users (
   user_id INTEGER PRIMARY KEY AUTOINCREMENT,
   full_name VARCHAR(120) NOT NULL,
   email VARCHAR(150) NOT NULL UNIQUE,
+  phone VARCHAR(20),
   password_hash VARCHAR(255) NOT NULL,
   role VARCHAR(20) NOT NULL DEFAULT 'customer',
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -45,16 +46,15 @@ CREATE TABLE IF NOT EXISTS cart (
   FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
-CREATE TABLE IF NOT EXISTS users (
-  user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  full_name VARCHAR(120) NOT NULL,
-  email VARCHAR(150) NOT NULL UNIQUE,
-  phone VARCHAR(20),
-  password_hash VARCHAR(255) NOT NULL,
-  role VARCHAR(20) NOT NULL DEFAULT 'customer',
+CREATE TABLE IF NOT EXISTS orders (
+  order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  total_amount DECIMAL(10,2) NOT NULL,
+  order_status VARCHAR(40) NOT NULL DEFAULT 'placed',
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  status BOOLEAN NOT NULL DEFAULT 1
+  status BOOLEAN NOT NULL DEFAULT 1,
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS order_items (
@@ -68,15 +68,16 @@ CREATE TABLE IF NOT EXISTS order_items (
   FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
-CREATE TABLE IF NOT EXISTS payment (
+CREATE TABLE IF NOT EXISTS payments (
   payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
   order_id INTEGER NOT NULL,
-  payment_method VARCHAR(40) NOT NULL,
   amount DECIMAL(10,2) NOT NULL,
-  payment_status VARCHAR(40) NOT NULL DEFAULT 'pending',
+  payment_method VARCHAR(50) NOT NULL,
+  payment_status VARCHAR(50) NOT NULL DEFAULT 'paid',
   transaction_ref VARCHAR(100),
-  paid_at DATETIME,
+  payment_gateway VARCHAR(50) NOT NULL DEFAULT 'simulated_gateway',
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
 

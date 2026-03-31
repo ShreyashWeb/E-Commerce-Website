@@ -8,6 +8,7 @@ import {
 import './App.css'
 import OrderManagement from './OrderManagement'
 import CustomerManagement from './CustomerManagement'
+import PaymentManagement from './PaymentManagement'
 
 function App() {
   const [currentModule, setCurrentModule] = useState('categories')
@@ -152,6 +153,10 @@ function App() {
     return <CustomerManagement />
   }
 
+  if (currentModule === 'payments') {
+    return <PaymentManagement />
+  }
+
   return (
     <div className="page-shell">
       <aside className="sidebar" aria-label="Main navigation">
@@ -178,6 +183,13 @@ function App() {
             style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
           >
             Module 3: Customers
+          </button>
+          <button
+            className={`nav-item ${currentModule === 'payments' ? 'active' : ''}`}
+            onClick={() => setCurrentModule('payments')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 4: Payments
           </button>
         </nav>
       </aside>

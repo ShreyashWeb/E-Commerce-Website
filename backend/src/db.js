@@ -28,6 +28,7 @@ function initializeSchema() {
   function executeNext() {
     if (index >= statements.length) {
       ensureUsersPhoneColumn();
+      ensurePaymentsTable();
       console.log('Database schema initialized successfully.');
       return;
     }
@@ -44,6 +45,70 @@ function initializeSchema() {
   }
 
   executeNext();
+}
+
+function ensurePaymentsTable() {
+  db.run(
+    `CREATE TABLE IF NOT EXISTS payments (
+      payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      order_id INTEGER NOT NULL,
+      amount DECIMAL(10,2) NOT NULL,
+      payment_method VARCHAR(50) NOT NULL,
+      payment_status VARCHAR(50) NOT NULL DEFAULT 'paid',
+      transaction_ref VARCHAR(100),
+      payment_gateway VARCHAR(50) NOT NULL DEFAULT 'simulated_gateway',
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (order_id) REFERENCES orders(order_id)
+    )`,
+    (error) => {
+      if (error) {
+        console.error('Error ensuring payments table:', error.message);
+        return;
+      }
+
+      db.get(
+        "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'payment'",
+        (tableCheckError, row) => {
+          if (tableCheckError) {
+            console.error('Error checking legacy payment table:', tableCheckError.message);
+            return;
+          }
+
+          if (!row) {
+            return;
+          }
+
+          db.run(
+            `INSERT INTO payments (order_id, amount, payment_method, payment_status, transaction_ref, payment_gateway, created_at, updated_at)
+             SELECT
+               order_id,
+               amount,
+               payment_method,
+               LOWER(COALESCE(payment_status, 'paid')),
+               transaction_ref,
+               'simulated_gateway',
+               COALESCE(created_at, CURRENT_TIMESTAMP),
+               COALESCE(created_at, CURRENT_TIMESTAMP)
+             FROM payment
+             WHERE NOT EXISTS (
+               SELECT 1 FROM payments p
+               WHERE p.order_id = payment.order_id
+                 AND p.transaction_ref = payment.transaction_ref
+             )`,
+            (migrationError) => {
+              if (migrationError) {
+                console.error('Error migrating legacy payment rows:', migrationError.message);
+                return;
+              }
+
+              console.log('Migration checked: legacy payment rows copied into payments table.');
+            },
+          );
+        },
+      );
+    },
+  );
 }
 
 function ensureUsersPhoneColumn() {

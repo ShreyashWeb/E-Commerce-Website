@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const categoriesRouter = require('./routes/categories');
 const ordersRouter = require('./routes/orders');
 const customersRouter = require('./routes/customers');
+const paymentsRouter = require('./routes/payments');
 const errorHandler = require('./middleware/errorHandler');
 
 require('./db');
@@ -23,6 +24,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/categories', categoriesRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/customers', customersRouter);
+app.use('/api/payments', paymentsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found.' });

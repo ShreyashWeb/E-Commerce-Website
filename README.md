@@ -2,13 +2,13 @@
 
 This is my internship project for an Ecommerce system.
 
-I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, and **Module 3 (Customer Management)** in this repository.
+I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, **Module 3 (Customer Management)**, and **Module 4 (Payment Management)** in this repository.
 
 ## Candidate Details
 
 - Name: Shreyash Tekriwal
 - Project: Ecommerce Website
-- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management
+- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management, Module 4 - Payment Management
 - Tech Stack: React, Node.js, Express, SQL
 
 ## Tech Stack
@@ -41,6 +41,13 @@ I have completed **Module 1 (Category Management)**, **Module 2 (Order Managemen
 - Deactivate customer accounts (soft delete)
 - Reactivate inactive customer accounts
 - Real-time customer statistics (total, active, inactive)
+
+### Module 4: Payment Management
+- Process payments for orders using payment methods (credit/debit card, PayPal, bank transfer)
+- Store transaction references and payment gateway metadata
+- Admin dashboard for payment history and status filters
+- Refund payments for cancelled orders
+- Track payment statistics (paid, failed, refunded, collected amount)
 
 ## Live Deployment Links
 
@@ -129,6 +136,12 @@ Frontend runs on: `http://localhost:5173`
 - `PATCH /api/customers/:id/deactivate` - Deactivate customer
 - `PATCH /api/customers/:id/reactivate` - Reactivate customer
 
+### Module 4 - Payment Management
+
+- `POST /api/payments` - Process payment
+- `GET /api/payments?payment_status=all|paid|failed|refunded` - List payments with filters
+- `PATCH /api/payments/:id/refund` - Refund payment for cancelled/returned order
+
 ## Sample API Requests
 
 ### Create Category
@@ -185,6 +198,15 @@ PATCH /api/orders/1/cancel
 5. **Edit Profile** - Click "Edit" to update customer details
 6. **Deactivate/Reactivate** - Use action buttons to soft delete or restore account
 
+### Module 4: Payment Management - End User Guide
+
+1. **Open Module 4** - Click "Module 4: Payments" in the sidebar
+2. **Process Payment** - Enter order ID, payment method, optional amount, and gateway, then submit
+3. **Track Transactions** - View payment ID, order ID, customer, method, amount, and status
+4. **Filter Payments** - Filter by Paid, Failed, or Refunded transactions
+5. **Issue Refund** - Click refund on paid payments after associated order is cancelled
+6. **Monitor Stats** - Check total transactions and collected amount cards
+
 ## End User Screenshots
 
 ### Module 1 Screenshots
@@ -206,8 +228,7 @@ PATCH /api/orders/1/cancel
 
 ## Next Modules Planned
 
-- Module 4: Product Management (CRUD + inventory)
-- Module 5: Authentication (Admin/User roles)
-- Module 6: Cart Management (add/remove items, quantity updates)
-- Module 7: Payments and checkout workflow
+- Module 5: Product Management (CRUD + inventory)
+- Module 6: Authentication (Admin/User roles)
+- Module 7: Cart Management (add/remove items, quantity updates)
 - Module 8: Wishlist and user profile management
