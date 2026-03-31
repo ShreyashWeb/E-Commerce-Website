@@ -225,3 +225,34 @@ export const deleteReview = async (reviewId, payload = {}) => {
   return response.data;
 };
 
+// Coupon APIs
+export const createCoupon = async (payload) => {
+  const response = await api.post('/coupons', payload);
+  return response.data;
+};
+
+export const getCouponsDashboard = async (filters = {}) => {
+  const response = await api.get('/coupons/dashboard', { params: filters });
+  return response.data;
+};
+
+export const applyCoupon = async (payload) => {
+  const response = await api.post('/coupons/apply', payload);
+  return response.data;
+};
+
+export const updateCoupon = async (couponId, payload) => {
+  const response = await api.put(`/coupons/${couponId}`, payload);
+  return response.data;
+};
+
+export const updateCouponStatus = async (couponId, payload) => {
+  const response = await api.patch(`/coupons/${couponId}/status`, payload);
+  return response.data;
+};
+
+export const deleteCoupon = async (couponId) => {
+  const response = await api.delete(`/coupons/${couponId}`);
+  return response.data;
+};
+

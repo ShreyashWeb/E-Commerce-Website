@@ -118,6 +118,19 @@ CREATE TABLE IF NOT EXISTS reviews (
   FOREIGN KEY (customer_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE IF NOT EXISTS coupons (
+  coupon_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  coupon_code VARCHAR(50) NOT NULL UNIQUE,
+  discount_type VARCHAR(50) NOT NULL,
+  discount_value DECIMAL(10,2) NOT NULL,
+  valid_from DATETIME NOT NULL,
+  valid_to DATETIME NOT NULL,
+  usage_limit INTEGER NOT NULL DEFAULT 0,
+  status BOOLEAN NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 INSERT OR IGNORE INTO categories (category_id, category_name, description, status)
 VALUES
   (1, 'Electronics', 'Phones, laptops, and smart devices', 1),

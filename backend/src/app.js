@@ -10,6 +10,7 @@ const cartsRouter = require('./routes/carts');
 const wishlistsRouter = require('./routes/wishlists');
 const shippingsRouter = require('./routes/shippings');
 const reviewsRouter = require('./routes/reviews');
+const couponsRouter = require('./routes/coupons');
 const errorHandler = require('./middleware/errorHandler');
 
 require('./db');
@@ -33,6 +34,7 @@ app.use('/api/carts', cartsRouter);
 app.use('/api/wishlists', wishlistsRouter);
 app.use('/api/shippings', shippingsRouter);
 app.use('/api/reviews', reviewsRouter);
+app.use('/api/coupons', couponsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found.' });

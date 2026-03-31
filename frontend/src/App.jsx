@@ -13,6 +13,7 @@ import CartManagement from './CartManagement'
 import WishlistManagement from './WishlistManagement'
 import ShippingManagement from './ShippingManagement'
 import ReviewManagement from './ReviewManagement'
+import CouponManagement from './CouponManagement'
 
 function App() {
   const [currentModule, setCurrentModule] = useState('categories')
@@ -177,6 +178,10 @@ function App() {
     return <ReviewManagement onNavigate={setCurrentModule} />
   }
 
+  if (currentModule === 'coupons') {
+    return <CouponManagement onNavigate={setCurrentModule} />
+  }
+
   return (
     <div className="page-shell">
       <aside className="sidebar" aria-label="Main navigation">
@@ -238,6 +243,13 @@ function App() {
             style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
           >
             Module 8: Reviews
+          </button>
+          <button
+            className={`nav-item ${currentModule === 'coupons' ? 'active' : ''}`}
+            onClick={() => setCurrentModule('coupons')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 9: Coupons
           </button>
         </nav>
       </aside>
