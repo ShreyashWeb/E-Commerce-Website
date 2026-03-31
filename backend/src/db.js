@@ -29,6 +29,7 @@ function initializeSchema() {
     if (index >= statements.length) {
       ensureUsersPhoneColumn();
       ensurePaymentsTable();
+      ensureCartTotalPriceColumn();
       console.log('Database schema initialized successfully.');
       return;
     }
@@ -129,6 +130,43 @@ function ensureUsersPhoneColumn() {
         return;
       }
       console.log('Migration applied: added phone column to users table.');
+    });
+  });
+}
+
+function ensureCartTotalPriceColumn() {
+  db.all('PRAGMA table_info(cart)', (error, columns) => {
+    if (error) {
+      console.error('Error checking cart table schema:', error.message);
+      return;
+    }
+
+    const hasTotalPriceColumn = columns.some((column) => column.name === 'total_price');
+    if (hasTotalPriceColumn) {
+      return;
+    }
+
+    db.run('ALTER TABLE cart ADD COLUMN total_price DECIMAL(10,2) NOT NULL DEFAULT 0', (alterError) => {
+      if (alterError) {
+        console.error('Error adding total_price column to cart table:', alterError.message);
+        return;
+      }
+
+      db.run(
+        `UPDATE cart
+         SET total_price = (
+           SELECT ROUND(COALESCE(p.price, 0) * cart.quantity, 2)
+           FROM products p
+           WHERE p.product_id = cart.product_id
+         )`,
+        (updateError) => {
+          if (updateError) {
+            console.error('Error backfilling total_price for cart table:', updateError.message);
+            return;
+          }
+          console.log('Migration applied: added total_price column to cart table.');
+        },
+      );
     });
   });
 }

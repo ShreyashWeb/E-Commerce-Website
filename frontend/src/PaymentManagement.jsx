@@ -139,6 +139,13 @@ function PaymentManagement({ onNavigate }) {
           >
             Module 1: Categories
           </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('carts')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 5: Cart
+          </button>
         </nav>
       </aside>
 

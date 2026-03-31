@@ -9,6 +9,7 @@ import './App.css'
 import OrderManagement from './OrderManagement'
 import CustomerManagement from './CustomerManagement'
 import PaymentManagement from './PaymentManagement'
+import CartManagement from './CartManagement'
 
 function App() {
   const [currentModule, setCurrentModule] = useState('categories')
@@ -157,6 +158,10 @@ function App() {
     return <PaymentManagement onNavigate={setCurrentModule} />
   }
 
+  if (currentModule === 'carts') {
+    return <CartManagement onNavigate={setCurrentModule} />
+  }
+
   return (
     <div className="page-shell">
       <aside className="sidebar" aria-label="Main navigation">
@@ -190,6 +195,13 @@ function App() {
             style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
           >
             Module 4: Payments
+          </button>
+          <button
+            className={`nav-item ${currentModule === 'carts' ? 'active' : ''}`}
+            onClick={() => setCurrentModule('carts')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 5: Cart
           </button>
         </nav>
       </aside>

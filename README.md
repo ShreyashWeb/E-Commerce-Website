@@ -2,13 +2,13 @@
 
 This is my internship project for an Ecommerce system.
 
-I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, **Module 3 (Customer Management)**, and **Module 4 (Payment Management)** in this repository.
+I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, **Module 3 (Customer Management)**, **Module 4 (Payment Management)**, and **Module 5 (Cart Management)** in this repository.
 
 ## Candidate Details
 
 - Name: Shreyash Tekriwal
 - Project: Ecommerce Website
-- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management, Module 4 - Payment Management
+- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management, Module 4 - Payment Management, Module 5 - Cart Management
 - Tech Stack: React, Node.js, Express, SQL
 
 ## Tech Stack
@@ -49,6 +49,14 @@ I have completed **Module 1 (Category Management)**, **Module 2 (Order Managemen
 - Refund payments for cancelled orders
 - Track payment statistics (paid, failed, refunded, collected amount)
 
+### Module 5: Cart Management
+- Add products to cart with stock validation
+- Update cart quantity with inventory checks
+- Remove items from cart with total recalculation
+- Customer cart dashboard with product, quantity, and total amount
+- Admin cart dashboard with active carts and abandoned cart insights
+- Real-time cart totals using stored total_price values
+
 ## Live Deployment Links
 
 - **Frontend**: https://e-commerce-website-woad-eta.vercel.app
@@ -69,6 +77,7 @@ I have completed **Module 1 (Category Management)**, **Module 2 (Order Managemen
 - `orders` - Customer orders
 - `order_items` - Order line items
 - `payments` - Payment records
+- `cart` - Cart items, quantity, and total price per line item
 - `wishlist` - User wishlist items
 
 ## How To Run
@@ -142,6 +151,15 @@ Frontend runs on: `http://localhost:5173`
 - `GET /api/payments?payment_status=all|paid|failed|refunded` - List payments with filters
 - `PATCH /api/payments/:id/refund` - Refund payment for cancelled/returned order
 
+### Module 5 - Cart Management
+
+- `GET /api/carts/products` - List products for cart add form
+- `POST /api/carts/items` - Add product to cart
+- `PUT /api/carts/items/:id` - Update cart item quantity
+- `DELETE /api/carts/items/:id` - Remove item from cart
+- `GET /api/carts/:customerId` - Get customer cart dashboard
+- `GET /api/carts/admin/dashboard` - Get admin cart abandonment dashboard
+
 ## Sample API Requests
 
 ### Create Category
@@ -207,6 +225,15 @@ PATCH /api/orders/1/cancel
 5. **Issue Refund** - Click refund on paid payments after associated order is cancelled
 6. **Monitor Stats** - Check total transactions and collected amount cards
 
+### Module 5: Cart Management - End User Guide
+
+1. **Open Module 5** - Click "Module 5: Cart" in sidebar
+2. **Add to Cart** - Select customer ID, product, and quantity, then click Add to Cart
+3. **Review Cart** - View product lines with price, quantity, and total amount
+4. **Update Quantity** - Click Update Qty and enter new quantity
+5. **Remove Item** - Click Remove to delete cart line item
+6. **Admin Monitoring** - Use Admin Cart Dashboard to track active and abandoned carts
+
 ## End User Screenshots
 
 ### Module 1 Screenshots
@@ -228,7 +255,6 @@ PATCH /api/orders/1/cancel
 
 ## Next Modules Planned
 
-- Module 5: Product Management (CRUD + inventory)
-- Module 6: Authentication (Admin/User roles)
-- Module 7: Cart Management (add/remove items, quantity updates)
+- Module 6: Product Management (CRUD + inventory)
+- Module 7: Authentication (Admin/User roles)
 - Module 8: Wishlist and user profile management

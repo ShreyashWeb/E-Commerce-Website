@@ -99,3 +99,34 @@ export const refundPayment = async (id) => {
   return response.data;
 };
 
+// Cart APIs
+export const getCartProducts = async () => {
+  const response = await api.get('/carts/products');
+  return response.data;
+};
+
+export const addToCart = async (payload) => {
+  const response = await api.post('/carts/items', payload);
+  return response.data;
+};
+
+export const getCustomerCart = async (customerId) => {
+  const response = await api.get(`/carts/${customerId}`);
+  return response.data;
+};
+
+export const updateCartItem = async (cartId, payload) => {
+  const response = await api.put(`/carts/items/${cartId}`, payload);
+  return response.data;
+};
+
+export const removeCartItem = async (cartId) => {
+  const response = await api.delete(`/carts/items/${cartId}`);
+  return response.data;
+};
+
+export const getCartDashboard = async () => {
+  const response = await api.get('/carts/admin/dashboard');
+  return response.data;
+};
+
