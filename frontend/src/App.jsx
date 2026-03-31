@@ -6,8 +6,10 @@ import {
   updateCategoryStatus,
 } from './api'
 import './App.css'
+import OrderManagement from './OrderManagement'
 
 function App() {
+  const [currentModule, setCurrentModule] = useState('categories')
   const [categories, setCategories] = useState([])
   const [stats, setStats] = useState({ total: 0, active: 0, inactive: 0 })
   const [loading, setLoading] = useState(true)
@@ -46,8 +48,10 @@ function App() {
   }
 
   useEffect(() => {
-    fetchCategoryData()
-  }, [])
+    if (currentModule === 'categories') {
+      fetchCategoryData()
+    }
+  }, [currentModule])
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
@@ -139,30 +143,30 @@ function App() {
     }
   }
 
+  if (currentModule === 'orders') {
+    return <OrderManagement />
+  }
+
   return (
     <div className="page-shell">
       <aside className="sidebar" aria-label="Main navigation">
         <h1 className="brand-title">Ecommerce Admin Panel</h1>
-        <p className="brand-subtitle">Internship Project - Module 1</p>
+        <p className="brand-subtitle">Internship Project</p>
         <nav>
-          <a href="#" className="nav-item active">
-            Dashboard
-          </a>
-          <a href="#" className="nav-item">
-            Categories
-          </a>
-          <a href="#" className="nav-item">
-            Cart
-          </a>
-          <a href="#" className="nav-item">
-            Orders
-          </a>
-          <a href="#" className="nav-item">
-            Login
-          </a>
-          <a href="#" className="nav-item">
-            Register
-          </a>
+          <button
+            className={`nav-item ${currentModule === 'categories' ? 'active' : ''}`}
+            onClick={() => setCurrentModule('categories')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 1: Categories
+          </button>
+          <button
+            className={`nav-item ${currentModule === 'orders' ? 'active' : ''}`}
+            onClick={() => setCurrentModule('orders')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 2: Orders
+          </button>
         </nav>
       </aside>
 

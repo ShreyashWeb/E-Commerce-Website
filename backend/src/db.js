@@ -5,18 +5,45 @@ const sqlite3 = require('sqlite3').verbose();
 const dbPath = path.join(__dirname, '..', 'ecommerce.db');
 const schemaPath = path.join(__dirname, 'database', 'schema.sql');
 
-const db = new sqlite3.Database(dbPath);
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error('Error opening database:', err.message);
+  } else {
+    console.log('Connected to database.');
+    initializeSchema();
+  }
+});
 
-db.serialize(() => {
+function initializeSchema() {
   db.run('PRAGMA foreign_keys = ON');
 
   const schemaSql = fs.readFileSync(schemaPath, 'utf-8');
-  db.exec(schemaSql, (error) => {
-    if (error) {
-      console.error('Failed to initialize database schema:', error.message);
+  const statements = schemaSql
+    .split(';')
+    .map(stmt => stmt.trim())
+    .filter(stmt => stmt.length > 0);
+
+  let index = 0;
+
+  function executeNext() {
+    if (index >= statements.length) {
+      console.log('Database schema initialized successfully.');
+      return;
     }
-  });
-});
+
+    const statement = statements[index];
+    index++;
+
+    db.run(statement, (err) => {
+      if (err) {
+        console.error('Error executing statement:', err.message);
+      }
+      executeNext();
+    });
+  }
+
+  executeNext();
+}
 
 const run = (sql, params = []) =>
   new Promise((resolve, reject) => {

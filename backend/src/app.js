@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const categoriesRouter = require('./routes/categories');
+const ordersRouter = require('./routes/orders');
 const errorHandler = require('./middleware/errorHandler');
 
 require('./db');
@@ -19,6 +20,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/categories', categoriesRouter);
+app.use('/api/orders', ordersRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found.' });

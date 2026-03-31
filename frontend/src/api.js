@@ -5,6 +5,7 @@ const api = axios.create({
   timeout: 10000,
 });
 
+// Category APIs
 export const getCategories = async (status = 'all') => {
   const response = await api.get('/categories', { params: { status } });
   return response.data;
@@ -24,3 +25,30 @@ export const updateCategoryStatus = async (id, payload) => {
   const response = await api.patch(`/categories/${id}/status`, payload);
   return response.data;
 };
+
+// Order APIs
+export const placeOrder = async (payload) => {
+  const response = await api.post('/orders', payload);
+  return response.data;
+};
+
+export const getOrders = async (filters = {}) => {
+  const response = await api.get('/orders', { params: filters });
+  return response.data;
+};
+
+export const getOrderDetails = async (id) => {
+  const response = await api.get(`/orders/${id}`);
+  return response.data;
+};
+
+export const updateOrderStatus = async (id, payload) => {
+  const response = await api.put(`/orders/${id}/status`, payload);
+  return response.data;
+};
+
+export const cancelOrder = async (id) => {
+  const response = await api.patch(`/orders/${id}/cancel`);
+  return response.data;
+};
+
