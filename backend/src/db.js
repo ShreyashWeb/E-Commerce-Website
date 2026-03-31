@@ -30,6 +30,7 @@ function initializeSchema() {
       ensureUsersPhoneColumn();
       ensurePaymentsTable();
       ensureCartTotalPriceColumn();
+      ensureWishlistUpdatedAtColumn();
       console.log('Database schema initialized successfully.');
       return;
     }
@@ -167,6 +168,28 @@ function ensureCartTotalPriceColumn() {
           console.log('Migration applied: added total_price column to cart table.');
         },
       );
+    });
+  });
+}
+
+function ensureWishlistUpdatedAtColumn() {
+  db.all('PRAGMA table_info(wishlist)', (error, columns) => {
+    if (error) {
+      console.error('Error checking wishlist table schema:', error.message);
+      return;
+    }
+
+    const hasUpdatedAtColumn = columns.some((column) => column.name === 'updated_at');
+    if (hasUpdatedAtColumn) {
+      return;
+    }
+
+    db.run('ALTER TABLE wishlist ADD COLUMN updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP', (alterError) => {
+      if (alterError) {
+        console.error('Error adding updated_at column to wishlist table:', alterError.message);
+        return;
+      }
+      console.log('Migration applied: added updated_at column to wishlist table.');
     });
   });
 }

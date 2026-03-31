@@ -1,0 +1,280 @@
+.page-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff8ef 0%, #f6f8ff 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #35234d 0%, #241837 100%);
+  color: #efe8ff;
+  padding: 28px 20px;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 21px;
+}
+
+.brand-subtitle {
+  margin: 8px 0 24px;
+  font-size: 13px;
+  color: #cfbef9;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  color: #f5efff;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background: rgba(183, 143, 255, 0.26);
+}
+
+.main-content {
+  padding: 28px;
+}
+
+.header-card,
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(42, 28, 66, 0.08);
+}
+
+.header-card {
+  padding: 24px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  color: #7f43cf;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+}
+
+.header-card h2 {
+  margin: 6px 0;
+  color: #341c55;
+}
+
+.subtitle {
+  margin: 0;
+  color: #695a82;
+  max-width: 640px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(145px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  background: linear-gradient(120deg, #7f43cf, #e09658);
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.stat-card span {
+  font-size: 12px;
+  opacity: 0.92;
+}
+
+.stat-card strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 20px;
+}
+
+.content-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+}
+
+.form-card form {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-size: 12px;
+  color: #4b3d5f;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-weight: 600;
+}
+
+input,
+select {
+  border: 1px solid #dfd5ee;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #6d3bb8;
+  color: #fff;
+  padding: 10px 16px;
+}
+
+.btn-secondary {
+  background: #f2ecfb;
+  color: #52317f;
+  padding: 10px 16px;
+}
+
+.btn-inline {
+  padding: 6px 10px;
+  background: #f0e7ff;
+  color: #5a2ea2;
+}
+
+.btn-inline.danger {
+  background: #ffe8e8;
+  color: #aa1f1f;
+}
+
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid #efe7fb;
+  padding: 12px 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #7c679b;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.message {
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.message.error {
+  background: #ffe6e6;
+  color: #9f1e1e;
+}
+
+.message.success {
+  background: #eaf9ee;
+  color: #1c7a35;
+}
+
+.action-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.status-pill {
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-pill.active {
+  background: #e2f6e7;
+  color: #207a34;
+}
+
+.status-pill.inactive {
+  background: #ffe9e9;
+  color: #a01f1f;
+}
+
+@media (max-width: 980px) {
+  .page-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    padding: 18px;
+  }
+
+  .header-card {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  th,
+  td {
+    font-size: 12px;
+  }
+
+  .action-cell {
+    flex-direction: column;
+  }
+}

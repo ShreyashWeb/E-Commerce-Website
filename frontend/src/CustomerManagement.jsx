@@ -174,6 +174,13 @@ function CustomerManagement({ onNavigate }) {
           >
             Module 5: Cart
           </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('wishlists')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 6: Wishlist
+          </button>
         </nav>
       </aside>
 

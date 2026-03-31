@@ -2,13 +2,13 @@
 
 This is my internship project for an Ecommerce system.
 
-I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, **Module 3 (Customer Management)**, **Module 4 (Payment Management)**, and **Module 5 (Cart Management)** in this repository.
+I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, **Module 3 (Customer Management)**, **Module 4 (Payment Management)**, **Module 5 (Cart Management)**, and **Module 6 (Wishlist Management)** in this repository.
 
 ## Candidate Details
 
 - Name: Shreyash Tekriwal
 - Project: Ecommerce Website
-- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management, Module 4 - Payment Management, Module 5 - Cart Management
+- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management, Module 4 - Payment Management, Module 5 - Cart Management, Module 6 - Wishlist Management
 - Tech Stack: React, Node.js, Express, SQL
 
 ## Tech Stack
@@ -57,6 +57,14 @@ I have completed **Module 1 (Category Management)**, **Module 2 (Order Managemen
 - Admin cart dashboard with active carts and abandoned cart insights
 - Real-time cart totals using stored total_price values
 
+### Module 6: Wishlist Management
+- Add products to wishlist for future purchase consideration
+- View wishlist with product name, price, and availability
+- Remove products from wishlist
+- Move products from wishlist to cart in one action
+- Real-time wishlist summary for each customer
+- Integrated navigation with existing modules on same dashboard
+
 ## Live Deployment Links
 
 - **Frontend**: https://e-commerce-website-woad-eta.vercel.app
@@ -78,6 +86,7 @@ I have completed **Module 1 (Category Management)**, **Module 2 (Order Managemen
 - `order_items` - Order line items
 - `payments` - Payment records
 - `cart` - Cart items, quantity, and total price per line item
+- `wishlist` - Wishlist records for saved products
 - `wishlist` - User wishlist items
 
 ## How To Run
@@ -160,6 +169,14 @@ Frontend runs on: `http://localhost:5173`
 - `GET /api/carts/:customerId` - Get customer cart dashboard
 - `GET /api/carts/admin/dashboard` - Get admin cart abandonment dashboard
 
+### Module 6 - Wishlist Management
+
+- `GET /api/wishlists/products` - List products for wishlist add form
+- `POST /api/wishlists/items` - Add item to wishlist
+- `GET /api/wishlists/:customerId` - View customer wishlist
+- `DELETE /api/wishlists/items/:id` - Remove item from wishlist
+- `PATCH /api/wishlists/items/:id/move-to-cart` - Move wishlist item to cart
+
 ## Sample API Requests
 
 ### Create Category
@@ -234,6 +251,15 @@ PATCH /api/orders/1/cancel
 5. **Remove Item** - Click Remove to delete cart line item
 6. **Admin Monitoring** - Use Admin Cart Dashboard to track active and abandoned carts
 
+### Module 6: Wishlist Management - End User Guide
+
+1. **Open Module 6** - Click "Module 6: Wishlist" in sidebar navigation
+2. **Add to Wishlist** - Choose customer and product, then click Add to Wishlist
+3. **View Wishlist** - Review wishlist list with name, price, and stock availability
+4. **Move to Cart** - Click Move to Cart to transfer an item directly to customer cart
+5. **Remove Item** - Click Remove to delete product from wishlist
+6. **Track Summary** - Monitor total wishlist items from stats card
+
 ## End User Screenshots
 
 ### Module 1 Screenshots
@@ -255,6 +281,5 @@ PATCH /api/orders/1/cancel
 
 ## Next Modules Planned
 
-- Module 6: Product Management (CRUD + inventory)
-- Module 7: Authentication (Admin/User roles)
-- Module 8: Wishlist and user profile management
+- Module 7: Product Management (CRUD + inventory)
+- Module 8: Authentication (Admin/User roles)

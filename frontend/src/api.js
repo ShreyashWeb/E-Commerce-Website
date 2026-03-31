@@ -130,3 +130,29 @@ export const getCartDashboard = async () => {
   return response.data;
 };
 
+// Wishlist APIs
+export const getWishlistProducts = async () => {
+  const response = await api.get('/wishlists/products');
+  return response.data;
+};
+
+export const addToWishlist = async (payload) => {
+  const response = await api.post('/wishlists/items', payload);
+  return response.data;
+};
+
+export const getCustomerWishlist = async (customerId) => {
+  const response = await api.get(`/wishlists/${customerId}`);
+  return response.data;
+};
+
+export const removeFromWishlist = async (wishlistId) => {
+  const response = await api.delete(`/wishlists/items/${wishlistId}`);
+  return response.data;
+};
+
+export const moveWishlistToCart = async (wishlistId) => {
+  const response = await api.patch(`/wishlists/items/${wishlistId}/move-to-cart`);
+  return response.data;
+};
+

@@ -7,6 +7,7 @@ const ordersRouter = require('./routes/orders');
 const customersRouter = require('./routes/customers');
 const paymentsRouter = require('./routes/payments');
 const cartsRouter = require('./routes/carts');
+const wishlistsRouter = require('./routes/wishlists');
 const errorHandler = require('./middleware/errorHandler');
 
 require('./db');
@@ -27,6 +28,7 @@ app.use('/api/orders', ordersRouter);
 app.use('/api/customers', customersRouter);
 app.use('/api/payments', paymentsRouter);
 app.use('/api/carts', cartsRouter);
+app.use('/api/wishlists', wishlistsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found.' });

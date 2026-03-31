@@ -159,6 +159,9 @@ function CartManagement({ onNavigate }) {
           <button className="nav-item" onClick={() => onNavigate?.('payments')} style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}>
             Module 4: Payments
           </button>
+          <button className="nav-item" onClick={() => onNavigate?.('wishlists')} style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}>
+            Module 6: Wishlist
+          </button>
         </nav>
       </aside>
 
