@@ -11,6 +11,7 @@ import CustomerManagement from './CustomerManagement'
 import PaymentManagement from './PaymentManagement'
 import CartManagement from './CartManagement'
 import WishlistManagement from './WishlistManagement'
+import ShippingManagement from './ShippingManagement'
 
 function App() {
   const [currentModule, setCurrentModule] = useState('categories')
@@ -167,6 +168,10 @@ function App() {
     return <WishlistManagement onNavigate={setCurrentModule} />
   }
 
+  if (currentModule === 'shippings') {
+    return <ShippingManagement onNavigate={setCurrentModule} />
+  }
+
   return (
     <div className="page-shell">
       <aside className="sidebar" aria-label="Main navigation">
@@ -214,6 +219,13 @@ function App() {
             style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
           >
             Module 6: Wishlist
+          </button>
+          <button
+            className={`nav-item ${currentModule === 'shippings' ? 'active' : ''}`}
+            onClick={() => setCurrentModule('shippings')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 7: Shipping
           </button>
         </nav>
       </aside>

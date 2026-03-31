@@ -31,6 +31,7 @@ function initializeSchema() {
       ensurePaymentsTable();
       ensureCartTotalPriceColumn();
       ensureWishlistUpdatedAtColumn();
+      ensureShippingTable();
       console.log('Database schema initialized successfully.');
       return;
     }
@@ -192,6 +193,29 @@ function ensureWishlistUpdatedAtColumn() {
       console.log('Migration applied: added updated_at column to wishlist table.');
     });
   });
+}
+
+function ensureShippingTable() {
+  db.run(
+    `CREATE TABLE IF NOT EXISTS shipping (
+      shipping_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      order_id INTEGER NOT NULL UNIQUE,
+      courier_service VARCHAR(100) NOT NULL,
+      tracking_number VARCHAR(100) NOT NULL UNIQUE,
+      shipping_status VARCHAR(50) NOT NULL DEFAULT 'Shipped',
+      shipping_cost DECIMAL(10,2) NOT NULL DEFAULT 0,
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (order_id) REFERENCES orders(order_id)
+    )`,
+    (error) => {
+      if (error) {
+        console.error('Error ensuring shipping table:', error.message);
+        return;
+      }
+      console.log('Migration checked: shipping table ready.');
+    },
+  );
 }
 
 const run = (sql, params = []) =>

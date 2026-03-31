@@ -156,3 +156,36 @@ export const moveWishlistToCart = async (wishlistId) => {
   return response.data;
 };
 
+// Shipping APIs
+export const getShippingDashboard = async (filters = {}) => {
+  const response = await api.get('/shippings/dashboard', { params: filters });
+  return response.data;
+};
+
+export const createShipping = async (payload) => {
+  const response = await api.post('/shippings', payload);
+  return response.data;
+};
+
+export const getShippingByTrackingNumber = async (trackingNumber) => {
+  const response = await api.get(`/shippings/track/${trackingNumber}`);
+  return response.data;
+};
+
+export const getShippingByOrderId = async (orderId) => {
+  const response = await api.get(`/shippings/order/${orderId}`);
+  return response.data;
+};
+
+export const updateShipping = async (shippingId, payload) => {
+  const response = await api.patch(`/shippings/${shippingId}`, payload);
+  return response.data;
+};
+
+export const calculateShippingCost = async (orderAmount, weight = 1) => {
+  const response = await api.get('/shippings/calculate-cost', {
+    params: { order_amount: orderAmount, weight },
+  });
+  return response.data;
+};
+

@@ -93,6 +93,18 @@ CREATE TABLE IF NOT EXISTS wishlist (
   FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
+CREATE TABLE IF NOT EXISTS shipping (
+  shipping_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  order_id INTEGER NOT NULL UNIQUE,
+  courier_service VARCHAR(100) NOT NULL,
+  tracking_number VARCHAR(100) NOT NULL UNIQUE,
+  shipping_status VARCHAR(50) NOT NULL DEFAULT 'Shipped',
+  shipping_cost DECIMAL(10,2) NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+
 INSERT OR IGNORE INTO categories (category_id, category_name, description, status)
 VALUES
   (1, 'Electronics', 'Phones, laptops, and smart devices', 1),
