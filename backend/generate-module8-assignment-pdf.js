@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const doc = new PDFDocument({ size: 'A4', margin: 50 });
-const outputPath = path.join(__dirname, 'Module-8-Assignment-Submission.pdf');
+const outputPath = path.join(__dirname, '..', 'Module 8 by Shreyash Tekriwal.pdf');
 const stream = fs.createWriteStream(outputPath);
 
 doc.pipe(stream);
