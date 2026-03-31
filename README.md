@@ -2,194 +2,187 @@
 
 This is my internship project for an Ecommerce system.
 
-I have completed Module 1 (Category Management) in this repository.
+I have completed **Module 1 (Category Management)** and **Module 2 (Order Management)** in this repository.
 
 ## Candidate Details
 
 - Name: Shreyash Tekriwal
 - Project: Ecommerce Website
-- Internship Module: Module 1 - Category Management
+- Internship Modules: Module 1 - Category Management & Module 2 - Order Management
 - Tech Stack: React, Node.js, Express, SQL
 
 ## Tech Stack
 
-- Frontend: React + Vite + Axios
+- Frontend: React + Vite + Axios  
 - Backend: Node.js + Express
 - Database: SQLite (relational SQL schema, easy local setup)
 
-## Module Completed
+## Modules Completed
 
-- Category Management
-- Features implemented:
-  - Create new category
-  - Category dashboard with list and product count
-  - Update category name and description
-  - Soft delete/deactivate using status column
-  - Product reassignment check before category deactivation
+### Module 1: Category Management
+- Create new category
+- Category dashboard with list and product count
+- Update category name and description
+- Soft delete/deactivate using status column
+- Product reassignment check before category deactivation
+
+### Module 2: Order Management
+- View all customer orders with status filters
+- Order dashboard with pending/shipped/delivered/cancelled statistics
+- Update order status (Pending → Shipped → Delivered)
+- Cancel orders with validation (cannot cancel shipped/delivered)
+- Order details modal with order items and customer information
+- Soft delete implementation via status column
+
+## Live Deployment Links
+
+- **Frontend**: https://e-commerce-website-woad-eta.vercel.app
+- **Backend Health**: https://ecommerce-backend-2s98.onrender.com/api/health
 
 ## Project Structure
 
-- `frontend/`: React user interface
+- `frontend/`: React user interface with Vite build tool
 - `backend/`: Express API + SQL schema + database logic
+- `backend/scripts/`: Utility scripts for database management
 
 ## Database Tables Included
 
-- `users`
-- `categories`
-- `products`
-- `cart`
-- `orders`
-- `order_items`
-- `payment`
-- `wishlist`
+- `users` - User accounts and authentication
+- `categories` - Product categories
+- `products` - Product catalog
+- `cart` - Shopping cart items
+- `orders` - Customer orders
+- `order_items` - Order line items
+- `payment` - Payment records
+- `wishlist` - User wishlist items
 
 ## How To Run
 
 ### 1. Install dependencies
 
 ```bash
-cd backend
-npm install
-cd ../frontend
-npm install
+cd backend && npm install
+cd ../frontend && npm install
 ```
 
 ### 2. Configure environment files
 
-Backend
-
-```bash
-cp backend/.env.example backend/.env
+**Backend** (`.env`):
+```
+NODE_ENV=development
+PORT=5000
 ```
 
-Frontend
-
-```bash
-cp frontend/.env.example frontend/.env
+**Frontend** (`.env`):
+```
+VITE_API_BASE_URL=http://localhost:5000/api
 ```
 
 ### 3. Start backend server
 
 ```bash
-cd backend
-npm run dev
+cd backend && npm run dev
 ```
 
-Backend URL: `http://localhost:5000`
+Backend runs on: `http://localhost:5000`
 
-### 4. Start frontend server
+### 4. Start frontend server (new terminal)
 
 ```bash
-cd frontend
-npm run dev
+cd frontend && npm run dev
 ```
 
-Frontend URL: `http://localhost:5173`
+Frontend runs on: `http://localhost:5173`
 
-## APIs Used In Module 1
+## APIs Reference
 
-- `GET /api/health`
-- `GET /api/categories?status=all|active|inactive`
-- `POST /api/categories`
-- `PUT /api/categories/:id`
-- `PATCH /api/categories/:id/status`
+### Module 1 - Category Management
 
-### Sample Request - Create Category
+- `GET /api/health` - Health check
+- `GET /api/categories?status=all|active|inactive` - List categories
+- `POST /api/categories` - Create category
+- `PUT /api/categories/:id` - Update category
+- `PATCH /api/categories/:id/status` - Change category status
+
+### Module 2 - Order Management
+
+- `POST /api/orders` - Place order from cart
+- `GET /api/orders?order_status=pending|shipped|delivered` - List orders with filters
+- `GET /api/orders/:id` - Get order details with items
+- `PUT /api/orders/:id/status` - Update order status
+- `PATCH /api/orders/:id/cancel` - Cancel order
+
+## Sample API Requests
+
+### Create Category
 
 ```json
+POST /api/categories
 {
-  "category_name": "Books",
-  "description": "Academic and non-academic books"
+  "category_name": "Electronics",
+  "description": "Phones, laptops, and accessories"
 }
 ```
 
-### Sample Request - Deactivate With Product Reassignment
+### Update Order Status
 
 ```json
+PUT /api/orders/1/status
 {
-  "status": false,
-  "replacementCategoryId": 2
+  "order_status": "shipped"
 }
 ```
 
-## End User Documentation
+### Cancel Order
 
-This section is for end user flow of Module 1.
+```
+PATCH /api/orders/1/cancel
+```
 
-### Live Links
+## Module Features Documentation
 
-- Frontend: https://e-commerce-website-woad-eta.vercel.app
-- Backend Health: https://ecommerce-backend-2s98.onrender.com/api/health
+### Module 1: Category Management - End User Guide
 
-### How to use this module
+1. **Open Dashboard** - Frontend loads with category list and stats
+2. **Create Category** - Fill form with name and description, click Create
+3. **Update Category** - Click Edit, modify details, click Save Changes
+4. **Deactivate Category** - Click Deactivate, optionally reassign products
+5. **Activate Category** - Filter to Inactive, click Activate
+6. **Use Filters** - Switch between All, Active, and Inactive views
 
-### 1. Open dashboard
+### Module 2: Order Management - End User Guide
 
-1. Open the frontend link in browser.
-2. Category dashboard page will open.
-3. You can see category list and top stats cards.
+1. **View Orders** - Dashboard displays all orders with customer details
+2. **Filter Orders** - Use status filter to view Pending, Shipped, or Delivered orders
+3. **View Order Details** - Click View button to see order items and customer info
+4. **Update Status** - From order details modal, update order status as it progresses through workflow
+5. **Cancel Order** - Cancel pending orders before shipment
+6. **Track Statistics** - Stats cards show total and status breakdown
 
-### 2. Create new category
+## End User Screenshots
 
-1. In left form, enter category name.
-2. Add short description.
-3. Click Create Category button.
-4. Success message will show and category appears in table.
+### Module 1 Screenshots
 
-### 3. Update category
+- Dashboard Overview - ![Overview](frontend/public/screenshots/dashboard-overview.png)
+- Filter Inactive State - ![Inactive Filter](frontend/public/screenshots/filter-inactive-empty.png)
+- Create Form - ![Create Form](frontend/public/screenshots/create-category-form-filled.png)
+- Success Message - ![Success](frontend/public/screenshots/category-created-success.png)
+- Deactivated View - ![Deactivated](frontend/public/screenshots/category-deactivated-inactive-view.png)
 
-1. Click Edit button from any row.
-2. Selected category data will come into form.
-3. Change name or description.
-4. Click Save Changes.
+## Architecture Highlights
 
-### 4. Deactivate category (soft delete)
-
-1. Click Deactivate button in actions.
-2. If category has products, system asks for replacement category id.
-3. Category status changes to Inactive.
-4. Data is not deleted from database, only status is changed.
-
-### 5. Activate category again
-
-1. Change filter to Inactive.
-2. Click Activate button for that category.
-3. Category will move back to Active list.
-
-### 6. Use filter options
-
-1. Filter dropdown has All, Active, Inactive.
-2. You can check records based on selected status.
-3. Empty table message is shown if no category in that filter.
-
-## End User Screenshots (Module 1)
-
-Screenshots preview in README:
-
-### 1. Dashboard Overview
-
-![Dashboard Overview](frontend/public/screenshots/dashboard-overview.png)
-
-### 2. Inactive Filter With Empty State
-
-![Inactive Filter Empty State](frontend/public/screenshots/filter-inactive-empty.png)
-
-### 3. Create Category Form Filled
-
-![Create Category Form](frontend/public/screenshots/create-category-form-filled.png)
-
-### 4. Category Created Success
-
-![Category Created Success](frontend/public/screenshots/category-created-success.png)
-
-### 5. Category Deactivated And Filtered Inactive
-
-![Category Deactivated Inactive View](frontend/public/screenshots/category-deactivated-inactive-view.png)
+- **Soft Delete Pattern**: Uses `status` column (1 for active, 0 for inactive) for data integrity
+- **Modular Frontend**: Single App component with navigation between modules
+- **RESTful API**: Standard HTTP methods for CRUD operations
+- **Responsive Design**: Mobile-friendly CSS Grid layouts
+- **Error Handling**: Comprehensive error messages at API and UI levels
+- **Separated Concerns**: Controllers handle business logic, routes handle HTTP routing
 
 ## Next Modules Planned
 
-- Authentication (Admin/User roles)
-- Product Management
-- Cart Management
-- Order + Payment workflow
-- Wishlist and user profile
+- Module 3: Product Management (CRUD + inventory)
+- Module 4: Authentication (Admin/User roles)
+- Module 5: Cart Management (add/remove items, quantity updates)
+- Module 6: Payments and checkout workflow
+- Module 7: Wishlist and user profile management
+- Module 8: Advanced features (reviews, search, recommendations)
