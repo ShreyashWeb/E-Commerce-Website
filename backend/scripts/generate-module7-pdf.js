@@ -158,6 +158,8 @@ doc.text('GitHub Commit: To be verified at https://github.com/ShreyashWeb/E-Comm
 doc.text('All 7 modules are deployed live and accessible through the frontend URL.');
 doc.text('Database schema, controllers, routes, and frontend components are complete.');
 
+doc.end();
+
 writeStream.on('finish', () => {
   console.log(`PDF generated successfully: ${outputPath}`);
 });
