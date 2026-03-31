@@ -8,7 +8,7 @@ import {
 } from './api'
 import './OrderManagement.css'
 
-function OrderManagement() {
+function OrderManagement({ onNavigate }) {
   const [orders, setOrders] = useState([])
   const [stats, setStats] = useState({
     total: 0,
@@ -109,21 +109,34 @@ function OrderManagement() {
         <h1 className="brand-title">Ecommerce Admin Panel</h1>
         <p className="brand-subtitle">Internship Project - Module 2</p>
         <nav>
-          <a href="#module-2" className="nav-item active">
-            Orders Dashboard
-          </a>
-          <a href="#" className="nav-item">
-            Categories
-          </a>
-          <a href="#" className="nav-item">
-            Products
-          </a>
-          <a href="#" className="nav-item">
-            Cart
-          </a>
-          <a href="#" className="nav-item">
-            Payments
-          </a>
+          <button
+            className="nav-item active"
+            onClick={() => onNavigate?.('orders')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 2: Orders
+          </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('categories')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 1: Categories
+          </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('customers')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 3: Customers
+          </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('payments')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 4: Payments
+          </button>
         </nav>
       </aside>
 

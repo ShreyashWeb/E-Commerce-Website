@@ -8,7 +8,7 @@ import {
 } from './api'
 import './CustomerManagement.css'
 
-function CustomerManagement() {
+function CustomerManagement({ onNavigate }) {
   const [customers, setCustomers] = useState([])
   const [stats, setStats] = useState({ total: 0, active: 0, inactive: 0 })
   const [loading, setLoading] = useState(true)
@@ -139,15 +139,34 @@ function CustomerManagement() {
         <h1 className="brand-title">Ecommerce Admin Panel</h1>
         <p className="brand-subtitle">Internship Project</p>
         <nav>
-          <a href="#module-1" className="nav-item">
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('categories')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
             Module 1: Categories
-          </a>
-          <a href="#module-2" className="nav-item">
+          </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('orders')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
             Module 2: Orders
-          </a>
-          <a href="#module-3" className="nav-item active">
+          </button>
+          <button
+            className="nav-item active"
+            onClick={() => onNavigate?.('customers')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
             Module 3: Customers
-          </a>
+          </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('payments')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 4: Payments
+          </button>
         </nav>
       </aside>
 

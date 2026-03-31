@@ -146,15 +146,15 @@ function App() {
   }
 
   if (currentModule === 'orders') {
-    return <OrderManagement />
+    return <OrderManagement onNavigate={setCurrentModule} />
   }
 
   if (currentModule === 'customers') {
-    return <CustomerManagement />
+    return <CustomerManagement onNavigate={setCurrentModule} />
   }
 
   if (currentModule === 'payments') {
-    return <PaymentManagement />
+    return <PaymentManagement onNavigate={setCurrentModule} />
   }
 
   return (

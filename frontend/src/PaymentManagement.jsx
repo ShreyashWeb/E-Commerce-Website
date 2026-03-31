@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getPayments, processPayment, refundPayment } from './api'
 import './PaymentManagement.css'
 
-function PaymentManagement() {
+function PaymentManagement({ onNavigate }) {
   const [payments, setPayments] = useState([])
   const [stats, setStats] = useState({
     total: 0,
@@ -111,10 +111,34 @@ function PaymentManagement() {
         <h1 className="brand-title">Ecommerce Admin Panel</h1>
         <p className="brand-subtitle">Internship Project - Module 4</p>
         <nav>
-          <a href="#module-4" className="nav-item active">Module 4: Payments</a>
-          <a href="#" className="nav-item">Orders</a>
-          <a href="#" className="nav-item">Customers</a>
-          <a href="#" className="nav-item">Categories</a>
+          <button
+            className="nav-item active"
+            onClick={() => onNavigate?.('payments')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 4: Payments
+          </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('orders')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 2: Orders
+          </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('customers')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 3: Customers
+          </button>
+          <button
+            className="nav-item"
+            onClick={() => onNavigate?.('categories')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
+          >
+            Module 1: Categories
+          </button>
         </nav>
       </aside>
 
