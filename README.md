@@ -2,13 +2,13 @@
 
 This is my internship project for an Ecommerce system.
 
-I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, **Module 3 (Customer Management)**, **Module 4 (Payment Management)**, **Module 5 (Cart Management)**, and **Module 6 (Wishlist Management)** in this repository.
+I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, **Module 3 (Customer Management)**, **Module 4 (Payment Management)**, **Module 5 (Cart Management)**, **Module 6 (Wishlist Management)**, and **Module 7 (Shipping Management)** in this repository.
 
 ## Candidate Details
 
 - Name: Shreyash Tekriwal
 - Project: Ecommerce Website
-- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management, Module 4 - Payment Management, Module 5 - Cart Management, Module 6 - Wishlist Management
+- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management, Module 4 - Payment Management, Module 5 - Cart Management, Module 6 - Wishlist Management, Module 7 - Shipping Management
 - Tech Stack: React, Node.js, Express, SQL
 
 ## Tech Stack
@@ -65,6 +65,15 @@ I have completed **Module 1 (Category Management)**, **Module 2 (Order Managemen
 - Real-time wishlist summary for each customer
 - Integrated navigation with existing modules on same dashboard
 
+### Module 7: Shipping Management
+- Calculate shipping costs based on order amount and package weight
+- Admin dashboard to view all shipments with status filtering
+- Create shipping records for orders with auto-generated tracking numbers
+- Track shipments by tracking number (customer-facing feature)
+- Update shipping information including courier service and status (Shipped, In Transit, Delivered)
+- Real-time shipping statistics (total shipments, status breakdown, total cost)
+- Random courier assignment from major carriers (FedEx, UPS, DHL, Amazon, Local)
+
 ## Live Deployment Links
 
 - **Frontend**: https://e-commerce-website-woad-eta.vercel.app
@@ -88,6 +97,7 @@ I have completed **Module 1 (Category Management)**, **Module 2 (Order Managemen
 - `cart` - Cart items, quantity, and total price per line item
 - `wishlist` - Wishlist records for saved products
 - `wishlist` - User wishlist items
+- `shipping` - Shipping records with tracking number, courier service, and status
 
 ## How To Run
 
@@ -177,6 +187,15 @@ Frontend runs on: `http://localhost:5173`
 - `DELETE /api/wishlists/items/:id` - Remove item from wishlist
 - `PATCH /api/wishlists/items/:id/move-to-cart` - Move wishlist item to cart
 
+### Module 7 - Shipping Management
+
+- `GET /api/shippings/dashboard?shipping_status=all|Shipped|In Transit|Delivered` - Admin dashboard with all shipments
+- `POST /api/shippings` - Create shipping record for order
+- `GET /api/shippings/track/:tracking_number` - Track shipment by tracking number (customer)
+- `GET /api/shippings/order/:order_id` - Get shipping info by order ID
+- `PATCH /api/shippings/:shipping_id` - Update shipping information (courier, tracking, status)
+- `GET /api/shippings/calculate-cost?order_amount=X&weight=Y` - Calculate shipping cost
+
 ## Sample API Requests
 
 ### Create Category
@@ -260,6 +279,22 @@ PATCH /api/orders/1/cancel
 5. **Remove Item** - Click Remove to delete product from wishlist
 6. **Track Summary** - Monitor total wishlist items from stats card
 
+### Module 7: Shipping Management - End User Guide
+
+**For Admin Users:**
+1. **Open Module 7** - Click "Module 7: Shipping" in sidebar navigation
+2. **View Dashboard** - See all shipments with status, courier, and cost information
+3. **Filter by Status** - Use dropdown to view Shipped, In Transit, or Delivered shipments
+4. **Create Shipping** - Enter order ID, optionally courier and tracking, then create
+5. **Update Shipping** - Click Edit on any shipment to update courier, tracking number, or status
+6. **Calculate Costs** - Use cost calculator tab to determine shipping for given order amount and weight
+
+**For Customers:**
+1. **Track Shipment** - Use Track Shipment tab to enter tracking number and view status
+2. **View Status** - See current delivery status (Shipped, In Transit, Delivered)
+3. **Courier Info** - View which carrier is handling the shipment
+4. **Order Link** - See which order the shipment is associated with
+
 ## End User Screenshots
 
 ### Module 1 Screenshots
@@ -281,5 +316,4 @@ PATCH /api/orders/1/cancel
 
 ## Next Modules Planned
 
-- Module 7: Product Management (CRUD + inventory)
-- Module 8: Authentication (Admin/User roles)
+- Module 8: Analytics & Reporting (Sales, Revenue, Customer insights)
