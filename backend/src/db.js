@@ -27,6 +27,7 @@ function initializeSchema() {
 
   function executeNext() {
     if (index >= statements.length) {
+      ensureUsersPhoneColumn();
       console.log('Database schema initialized successfully.');
       return;
     }
@@ -43,6 +44,28 @@ function initializeSchema() {
   }
 
   executeNext();
+}
+
+function ensureUsersPhoneColumn() {
+  db.all('PRAGMA table_info(users)', (error, columns) => {
+    if (error) {
+      console.error('Error checking users table schema:', error.message);
+      return;
+    }
+
+    const hasPhoneColumn = columns.some((column) => column.name === 'phone');
+    if (hasPhoneColumn) {
+      return;
+    }
+
+    db.run('ALTER TABLE users ADD COLUMN phone VARCHAR(20)', (alterError) => {
+      if (alterError) {
+        console.error('Error adding phone column to users table:', alterError.message);
+        return;
+      }
+      console.log('Migration applied: added phone column to users table.');
+    });
+  });
 }
 
 const run = (sql, params = []) =>

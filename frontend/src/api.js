@@ -52,3 +52,34 @@ export const cancelOrder = async (id) => {
   return response.data;
 };
 
+// Customer APIs
+export const createCustomer = async (payload) => {
+  const response = await api.post('/customers', payload);
+  return response.data;
+};
+
+export const getCustomers = async (filters = {}) => {
+  const response = await api.get('/customers', { params: filters });
+  return response.data;
+};
+
+export const getCustomerDetails = async (id) => {
+  const response = await api.get(`/customers/${id}`);
+  return response.data;
+};
+
+export const updateCustomer = async (id, payload) => {
+  const response = await api.put(`/customers/${id}`, payload);
+  return response.data;
+};
+
+export const deactivateCustomer = async (id) => {
+  const response = await api.patch(`/customers/${id}/deactivate`);
+  return response.data;
+};
+
+export const reactivateCustomer = async (id) => {
+  const response = await api.patch(`/customers/${id}/reactivate`);
+  return response.data;
+};
+

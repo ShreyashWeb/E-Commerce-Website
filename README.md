@@ -2,13 +2,13 @@
 
 This is my internship project for an Ecommerce system.
 
-I have completed **Module 1 (Category Management)** and **Module 2 (Order Management)** in this repository.
+I have completed **Module 1 (Category Management)**, **Module 2 (Order Management)**, and **Module 3 (Customer Management)** in this repository.
 
 ## Candidate Details
 
 - Name: Shreyash Tekriwal
 - Project: Ecommerce Website
-- Internship Modules: Module 1 - Category Management & Module 2 - Order Management
+- Internship Modules: Module 1 - Category Management, Module 2 - Order Management, Module 3 - Customer Management
 - Tech Stack: React, Node.js, Express, SQL
 
 ## Tech Stack
@@ -33,6 +33,14 @@ I have completed **Module 1 (Category Management)** and **Module 2 (Order Manage
 - Cancel orders with validation (cannot cancel shipped/delivered)
 - Order details modal with order items and customer information
 - Soft delete implementation via status column
+
+### Module 3: Customer Management
+- Create new customer profiles
+- View customer dashboard with status filter (all/active/inactive)
+- Edit customer details (name, email, phone)
+- Deactivate customer accounts (soft delete)
+- Reactivate inactive customer accounts
+- Real-time customer statistics (total, active, inactive)
 
 ## Live Deployment Links
 
@@ -112,6 +120,15 @@ Frontend runs on: `http://localhost:5173`
 - `PUT /api/orders/:id/status` - Update order status
 - `PATCH /api/orders/:id/cancel` - Cancel order
 
+### Module 3 - Customer Management
+
+- `POST /api/customers` - Create customer
+- `GET /api/customers?status=all|active|inactive` - List customers with filter
+- `GET /api/customers/:id` - Get customer details
+- `PUT /api/customers/:id` - Update customer profile
+- `PATCH /api/customers/:id/deactivate` - Deactivate customer
+- `PATCH /api/customers/:id/reactivate` - Reactivate customer
+
 ## Sample API Requests
 
 ### Create Category
@@ -159,6 +176,15 @@ PATCH /api/orders/1/cancel
 5. **Cancel Order** - Cancel pending orders before shipment
 6. **Track Statistics** - Stats cards show total and status breakdown
 
+### Module 3: Customer Management - End User Guide
+
+1. **Open Module 3** - Click "Module 3: Customers" in the sidebar
+2. **Add Customer** - Click "Add New Customer", enter name/email/phone, submit form
+3. **View Customers** - Review customer table with joined date and account status
+4. **Filter Customers** - Use filter to view All, Active, or Inactive customers
+5. **Edit Profile** - Click "Edit" to update customer details
+6. **Deactivate/Reactivate** - Use action buttons to soft delete or restore account
+
 ## End User Screenshots
 
 ### Module 1 Screenshots
@@ -180,9 +206,8 @@ PATCH /api/orders/1/cancel
 
 ## Next Modules Planned
 
-- Module 3: Product Management (CRUD + inventory)
-- Module 4: Authentication (Admin/User roles)
-- Module 5: Cart Management (add/remove items, quantity updates)
-- Module 6: Payments and checkout workflow
-- Module 7: Wishlist and user profile management
-- Module 8: Advanced features (reviews, search, recommendations)
+- Module 4: Product Management (CRUD + inventory)
+- Module 5: Authentication (Admin/User roles)
+- Module 6: Cart Management (add/remove items, quantity updates)
+- Module 7: Payments and checkout workflow
+- Module 8: Wishlist and user profile management
