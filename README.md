@@ -68,7 +68,7 @@ I have completed **Module 1 (Category Management)**, **Module 2 (Order Managemen
 - `cart` - Shopping cart items
 - `orders` - Customer orders
 - `order_items` - Order line items
-- `payment` - Payment records
+- `payments` - Payment records
 - `wishlist` - User wishlist items
 
 ## How To Run
