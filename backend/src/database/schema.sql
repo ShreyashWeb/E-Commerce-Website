@@ -105,6 +105,19 @@ CREATE TABLE IF NOT EXISTS shipping (
   FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
 
+CREATE TABLE IF NOT EXISTS reviews (
+  review_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  product_id INTEGER NOT NULL,
+  customer_id INTEGER NOT NULL,
+  rating INTEGER NOT NULL CHECK(rating >= 1 AND rating <= 5),
+  review_text VARCHAR(1000),
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  status BOOLEAN NOT NULL DEFAULT 0,
+  FOREIGN KEY (product_id) REFERENCES products(product_id),
+  FOREIGN KEY (customer_id) REFERENCES users(user_id)
+);
+
 INSERT OR IGNORE INTO categories (category_id, category_name, description, status)
 VALUES
   (1, 'Electronics', 'Phones, laptops, and smart devices', 1),

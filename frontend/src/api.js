@@ -189,3 +189,39 @@ export const calculateShippingCost = async (orderAmount, weight = 1) => {
   return response.data;
 };
 
+// Review APIs
+export const addReview = async (payload) => {
+  const response = await api.post('/reviews', payload);
+  return response.data;
+};
+
+export const getProductReviews = async (productId, status = 'approved') => {
+  const response = await api.get(`/reviews/product/${productId}`, { params: { status } });
+  return response.data;
+};
+
+export const getCustomerReviews = async (customerId) => {
+  const response = await api.get(`/reviews/customer/${customerId}`);
+  return response.data;
+};
+
+export const getReviewsDashboard = async (filters = {}) => {
+  const response = await api.get('/reviews/admin/dashboard', { params: filters });
+  return response.data;
+};
+
+export const moderateReview = async (reviewId, action) => {
+  const response = await api.patch(`/reviews/${reviewId}/moderate`, { action });
+  return response.data;
+};
+
+export const updateReview = async (reviewId, payload) => {
+  const response = await api.put(`/reviews/${reviewId}`, payload);
+  return response.data;
+};
+
+export const deleteReview = async (reviewId, payload = {}) => {
+  const response = await api.delete(`/reviews/${reviewId}`, { data: payload });
+  return response.data;
+};
+

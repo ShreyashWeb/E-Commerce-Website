@@ -32,6 +32,7 @@ function initializeSchema() {
       ensureCartTotalPriceColumn();
       ensureWishlistUpdatedAtColumn();
       ensureShippingTable();
+      ensureReviewsTable();
       console.log('Database schema initialized successfully.');
       return;
     }
@@ -214,6 +215,30 @@ function ensureShippingTable() {
         return;
       }
       console.log('Migration checked: shipping table ready.');
+    },
+  );
+}
+
+function ensureReviewsTable() {
+  db.run(
+    `CREATE TABLE IF NOT EXISTS reviews (
+      review_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      product_id INTEGER NOT NULL,
+      customer_id INTEGER NOT NULL,
+      rating INTEGER NOT NULL CHECK(rating >= 1 AND rating <= 5),
+      review_text VARCHAR(1000),
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      status BOOLEAN NOT NULL DEFAULT 0,
+      FOREIGN KEY (product_id) REFERENCES products(product_id),
+      FOREIGN KEY (customer_id) REFERENCES users(user_id)
+    )`,
+    (error) => {
+      if (error) {
+        console.error('Error ensuring reviews table:', error.message);
+        return;
+      }
+      console.log('Migration checked: reviews table ready.');
     },
   );
 }
